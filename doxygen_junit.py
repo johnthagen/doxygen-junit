@@ -50,7 +50,7 @@ def parse_arguments():  # pragma: no cover
     return parser.parse_args()
 
 
-def main() -> int:  # pragma: no cover
+def main():  # pragma: no cover
     """Run doxygen_junit.
 
     When a doxygen stderr file is passed with --input, parse the file and write it to the file
