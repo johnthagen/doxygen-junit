@@ -30,3 +30,6 @@ class ParseDoxygenTestCase(unittest.TestCase):
                         self.assertEqual(error.line, 0)
                         self.assertEqual(error.message,
                                          'Doxyfile not found and no input file specified!')
+
+if __name__ == '__main__':
+    unittest.main()
