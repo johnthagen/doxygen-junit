@@ -4,12 +4,13 @@
 
 import unittest
 import sys
+
+from doxygen_junit import DoxygenError, parse_arguments, parse_doxygen
+
 if sys.version_info < (3, 3):
     import mock
 else:
     from unittest import mock
-
-from doxygen_junit import DoxygenError, parse_arguments, parse_doxygen
 
 
 class ParseDoxygenTestCase(unittest.TestCase):
