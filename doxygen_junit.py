@@ -37,7 +37,7 @@ class DoxygenError:
         return hash((self.line, self.message))
 
 
-def parse_arguments():  # pragma: no cover
+def parse_arguments():
     parser = argparse.ArgumentParser(description='Convert doxygen output to JUnit XML format.')
     parser.add_argument('-i',
                         '--input',
