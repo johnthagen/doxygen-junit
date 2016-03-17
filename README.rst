@@ -4,6 +4,12 @@ doxygen JUnit Converter
 .. image:: https://travis-ci.org/johnthagen/doxygen-junit.svg
     :target: https://travis-ci.org/johnthagen/doxygen-junit
 
+.. image:: https://codeclimate.com/github/johnthagen/doxygen-junit/badges/gpa.svg
+   :target: https://codeclimate.com/github/johnthagen/doxygen-junit
+
+.. image:: https://codeclimate.com/github/johnthagen/doxygen-junit/badges/issue_count.svg
+   :target: https://codeclimate.com/github/johnthagen/doxygen-junit
+
 .. image:: https://codecov.io/github/johnthagen/doxygen-junit/coverage.svg
     :target: https://codecov.io/github/johnthagen/doxygen-junit
 
