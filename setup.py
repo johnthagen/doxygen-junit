@@ -19,6 +19,7 @@ setuptools.setup(
     license='MIT',
 
     py_modules=['doxygen_junit'],
+    install_requires=open('requirements.txt').readlines(),
 
     classifiers=[
         'Development Status :: 4 - Beta',

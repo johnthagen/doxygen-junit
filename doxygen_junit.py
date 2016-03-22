@@ -8,6 +8,7 @@ import argparse
 import collections
 import re
 import sys
+from typing import Dict, Set  # noqa
 from xml.etree import ElementTree
 
 __version__ = '1.0.0'
@@ -17,12 +18,16 @@ EXIT_FAILURE = 1
 
 
 class DoxygenError:
-    def __init__(self, line, message):
+    def __init__(self,
+                 line,  # type: int
+                 message  # type: str
+                 ):
+        # type: (...) -> DoxygenError
         """Constructor.
 
         Args:
-            line (int): Line number of error.
-            message (str): Message associated with the error.
+            line: Line number of error.
+            message: Message associated with the error.
         """
         self.line = line
         self.message = message
@@ -38,6 +43,7 @@ class DoxygenError:
 
 
 def parse_arguments():
+    # type: () -> argparse.Namespace
     parser = argparse.ArgumentParser(description='Convert doxygen output to JUnit XML format.')
     parser.add_argument('-i',
                         '--input',
@@ -51,6 +57,7 @@ def parse_arguments():
 
 
 def main():  # pragma: no cover
+    # type: () -> int
     """Run doxygen_junit.
 
     When a doxygen stderr file is passed with --input, parse the file and write it to the file
@@ -72,13 +79,14 @@ def main():  # pragma: no cover
 
 
 def parse_doxygen(error_text):
+    # type: (str) -> Dict[str, Set[DoxygenError]]
     """Parses doxygen output.
 
     Args:
-        error_text (str): doxygen stderr.
+        error_text: doxygen stderr.
 
     Returns:
-        Dict[str, Set[DoxygenError]]: Doxygen errors grouped by file name.
+        Doxygen errors grouped by file name.
     """
     errors = collections.defaultdict(set)
     for line in error_text.split('\n'):
@@ -95,13 +103,14 @@ def parse_doxygen(error_text):
 
 
 def generate_test_suite(errors_by_filename):
+    # type: Dict[str, Set[DoxygenError]] -> ElementTree.ElementTree
     """Generates JUnit XML file from parsed errors.
 
     Args:
-        errors_by_filename (Dict[str, Set[DoxygenError]]): Doxygen errors.
+        errors_by_filename: Doxygen errors.
 
     Returns:
-        ElementTree.ElementTree: XML test suite.
+        XML test suite.
     """
     test_suite = ElementTree.Element('testsuite')
     test_suite.attrib['name'] = 'doxygen'
