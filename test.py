@@ -2,8 +2,8 @@
 
 """doxygen-junit tests."""
 
-import unittest
 import sys
+import unittest
 
 from doxygen_junit import DoxygenError, parse_arguments, parse_doxygen
 
