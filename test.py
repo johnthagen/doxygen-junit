@@ -1,6 +1,4 @@
-#!/usr/bin/env python3
-
-"""doxygen-junit tests."""
+""""doxygen-junit tests."""
 
 import sys
 import unittest
@@ -63,6 +61,3 @@ class ParseArgumentsTestCase(unittest.TestCase):
             self.assertEqual(mock_argument_parser.return_value.add_argument.call_count, 2)
             mock_argument_parser.return_value.parse_args.assert_called_once_with()
             self.assertIsNotNone(args)
-
-if __name__ == '__main__':
-    unittest.main()
