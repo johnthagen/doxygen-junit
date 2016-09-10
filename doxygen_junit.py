@@ -8,10 +8,8 @@ import argparse
 import collections
 import re
 import sys
-from typing import Dict, Set  # noqa
+from typing import Dict, Set  # noqa: F401
 from xml.etree import ElementTree
-
-__version__ = '1.0.0'
 
 EXIT_SUCCESS = 0
 EXIT_FAILURE = 1

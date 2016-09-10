@@ -2,12 +2,10 @@
 
 import setuptools
 
-import doxygen_junit
-
 
 setuptools.setup(
     name='doxygen-junit',
-    version=doxygen_junit.__version__,
+    version='1.0.0',
 
     description='Converts doxygen errors and warnings to JUnit XML format.',
     long_description=open('README.rst').read(),
