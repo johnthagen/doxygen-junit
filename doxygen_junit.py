@@ -80,6 +80,8 @@ def parse_doxygen(error_text  # type: str
     # type: (...) -> Dict[str, Set[DoxygenError]]
     """Parses doxygen output.
 
+    Generic doxygen messages use 'doxygen' as the file name.
+
     Args:
         error_text: doxygen stderr.
 
