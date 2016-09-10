@@ -11,8 +11,7 @@ import sys
 from typing import Dict, Set  # noqa: F401
 from xml.etree import ElementTree
 
-EXIT_SUCCESS = 0
-EXIT_FAILURE = 1
+from exitstatus import ExitStatus
 
 
 class DoxygenError:
@@ -20,7 +19,7 @@ class DoxygenError:
                  line,  # type: int
                  message  # type: str
                  ):
-        # type: (...) -> DoxygenError
+        # type: (...) -> None
         """Constructor.
 
         Args:
@@ -55,14 +54,14 @@ def parse_arguments():
 
 
 def main():  # pragma: no cover
-    # type: () -> int
+    # type: () -> ExitStatus
     """Run doxygen_junit.
 
     When a doxygen stderr file is passed with --input, parse the file and write it to the file
     passed with --output in JUnit XML format.
 
     Returns:
-        EXIT_SUCCESS if successful, EXIT_FAILURE if failed.
+        ExitStatus.success if successful, ExitStatus.failure if failed.
     """
     args = parse_arguments()
 
@@ -71,13 +70,14 @@ def main():  # pragma: no cover
         tree.write(args.output, encoding='utf-8', xml_declaration=True)
     except IOError as e:
         print(str(e), file=sys.stderr)
-        return EXIT_FAILURE
+        return ExitStatus.failure
 
-    return EXIT_SUCCESS
+    return ExitStatus.success
 
 
-def parse_doxygen(error_text):
-    # type: (str) -> Dict[str, Set[DoxygenError]]
+def parse_doxygen(error_text  # type: str
+                  ):
+    # type: (...) -> Dict[str, Set[DoxygenError]]
     """Parses doxygen output.
 
     Args:
@@ -100,8 +100,9 @@ def parse_doxygen(error_text):
     return errors
 
 
-def generate_test_suite(errors_by_filename):
-    # type: Dict[str, Set[DoxygenError]] -> ElementTree.ElementTree
+def generate_test_suite(errors_by_filename  # type: Dict[str, Set[DoxygenError]]
+                        ):
+    # type: (...) -> ElementTree.ElementTree
     """Generates JUnit XML file from parsed errors.
 
     Args:
