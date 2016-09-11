@@ -5,9 +5,9 @@ import unittest
 
 from doxygen_junit import DoxygenError, parse_arguments, parse_doxygen
 
-if sys.version_info < (3, 3):
+if sys.version_info < (3, 3):  # pragma: no cover
     import mock
-else:
+else:  # pragma: no cover
     from unittest import mock
 
 
