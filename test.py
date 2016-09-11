@@ -17,20 +17,20 @@ class ParseDoxygenTestCase(unittest.TestCase):
             'C:/Users/John Hagen/ClionProjects/test/main.cpp:40: warning: '
             'Compound Class is not documented.')
         for i, (filename, errors) in enumerate(file_errors.items()):
-            if i == 0:
+            if i == 0:  # pragma: no branch
                 self.assertEqual(filename, 'C:/Users/John Hagen/ClionProjects/test/main.cpp')
                 for j, error in enumerate(errors):
-                    if j == 0:
+                    if j == 0:  # pragma: no branch
                         self.assertEqual(error.line, 40)
                         self.assertEqual(error.message, 'Compound Class is not documented.')
 
     def test_single_doxygen_warning(self):
         file_errors = parse_doxygen('error: Doxyfile not found and no input file specified!')
         for i, (filename, errors) in enumerate(file_errors.items()):
-            if i == 0:
+            if i == 0:  # pragma: no branch
                 self.assertEqual(filename, 'doxygen')
                 for j, error in enumerate(errors):
-                    if j == 0:
+                    if j == 0:  # pragma: no branch
                         self.assertEqual(error.line, 0)
                         self.assertEqual(error.message,
                                          'Doxyfile not found and no input file specified!')
