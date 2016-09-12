@@ -3,7 +3,7 @@
 import sys
 import unittest
 
-from doxygen_junit import DoxygenError, parse_arguments, parse_doxygen
+from doxygen_junit import DoxygenError, generate_test_suite, parse_arguments, parse_doxygen
 
 if sys.version_info < (3, 3):  # pragma: no cover
     import mock
@@ -49,6 +49,39 @@ class DoxygenErrorTestCase(unittest.TestCase):
         error = DoxygenError(0, 'message')
         self.assertEqual(error.line, 0)
         self.assertEqual(error.message, 'message')
+
+
+class GenerateTestSuiteTestCase(unittest.TestCase):
+    def test_no_errors(self):
+        tree = generate_test_suite({})
+        root = tree.getroot()
+
+        self.assertEqual(root.get('errors'), str(0))
+        self.assertEqual(root.get('failures'), str(0))
+        self.assertEqual(root.get('tests'), str(1))
+        self.assertEqual(root.get('time'), str(0))
+
+        test_case_element = root.find('testcase')
+        self.assertEqual(test_case_element.get('name'), 'no errors')
+
+    def test_single(self):
+        errors = {'file_name':
+                  [DoxygenError(line=40,
+                                message='Compound Class is not documented.')]}
+        tree = generate_test_suite(errors)
+        root = tree.getroot()
+        self.assertEqual(root.get('errors'), str(1))
+        self.assertEqual(root.get('failures'), str(0))
+        self.assertEqual(root.get('tests'), str(1))
+        self.assertEqual(root.get('time'), str(0))
+
+        test_case_element = root.find('testcase')
+        self.assertEqual(test_case_element.get('name'), 'file_name')
+
+        error_element = test_case_element.find('error')
+        self.assertEqual(error_element.get('file'), 'file_name')
+        self.assertEqual(error_element.get('line'), str(40))
+        self.assertEqual(error_element.get('message'), '40: Compound Class is not documented.')
 
 
 class ParseArgumentsTestCase(unittest.TestCase):
