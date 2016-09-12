@@ -46,10 +46,12 @@ def parse_arguments():
                         '--input',
                         required=True,
                         help='Doxygen stderr file to parse.')
+
+    default_output_file = 'doxygen-junit.xml'
     parser.add_argument('-o',
                         '--output',
-                        default='doxygen-junit.xml',
-                        help='Output XML file.')
+                        default=default_output_file,
+                        help='Output JUnit XML file. (Default: {})'.format(default_output_file))
     return parser.parse_args()
 
 
@@ -114,8 +116,11 @@ def generate_test_suite(errors_by_filename  # type: Dict[str, Set[DoxygenError]]
         XML test suite.
     """
     test_suite = ElementTree.Element('testsuite')
+    test_suite.attrib['failures'] = str(0)
     test_suite.attrib['name'] = 'doxygen'
     test_suite.attrib['time'] = str(0)
+
+    # If no errors, create a blank test case.
     if len(errors_by_filename) == 0:
         test_suite.attrib['tests'] = str(1)
         test_suite.attrib['errors'] = str(0)
@@ -127,7 +132,7 @@ def generate_test_suite(errors_by_filename  # type: Dict[str, Set[DoxygenError]]
             test_case = ElementTree.SubElement(test_suite, 'testcase', name=filename)
             for error in errors:
                 ElementTree.SubElement(test_case, 'error', file=filename, line=str(error.line),
-                                       message='{}:{}'.format(error.line, error.message))
+                                       message='{}: {}'.format(error.line, error.message))
 
     return ElementTree.ElementTree(test_suite)
 
