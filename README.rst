@@ -63,7 +63,7 @@ the conversion tool.
 Releases
 --------
 
-1.0.0 - 2016-03-05
+1.0.0 - 2016-09-13
 ^^^^^^^^^^^^^^^^^^
 
 First release.
