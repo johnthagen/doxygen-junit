@@ -51,7 +51,7 @@ Convert it to JUnit XML format:
 
 .. code:: shell-session
 
-    $ doxygen_junit doxygen-stderr.txt doxygen-junit.xml
+    $ doxygen_junit --input doxygen-stderr.txt --output doxygen-junit.xml
 
 Releases
 --------
