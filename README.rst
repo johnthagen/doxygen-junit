@@ -53,6 +53,13 @@ Convert it to JUnit XML format:
 
     $ doxygen_junit --input doxygen-stderr.txt --output doxygen-junit.xml
 
+Contributors
+------------
+
+Credit to `@theandrewdavis <https://github.com/theandrewdavis>`_ for the initial development of
+the conversion tool.
+
+
 Releases
 --------
 
