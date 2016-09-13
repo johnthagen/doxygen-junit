@@ -9,7 +9,7 @@ setuptools.setup(
 
     description='Converts doxygen errors and warnings to JUnit XML format.',
     long_description=open('README.rst').read(),
-    keywords='doxygen C++ JUnit',
+    keywords='doxygen C C++ JUnit',
 
     author='John Hagen',
     author_email='johnthagen@gmail.com',
