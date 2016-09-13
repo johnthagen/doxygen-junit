@@ -35,6 +35,10 @@ class ParseDoxygenTestCase(unittest.TestCase):
                         self.assertEqual(error.message,
                                          'Doxyfile not found and no input file specified!')
 
+    def test_single_malformed(self):
+        file_errors = parse_doxygen('MALFORMED STRING')
+        self.assertEqual(len(file_errors), 0)
+
 
 class DoxygenErrorTestCase(unittest.TestCase):
     def test_eq(self):
