@@ -93,7 +93,7 @@ def parse_doxygen(error_text  # type: str
     errors = collections.defaultdict(set)
     for line in error_text.split('\n'):
         line = line.rstrip()
-        match = re.search(r'(.+):(\d+):\s+(error|warning):\s+(.*)', line)
+        match = re.search(r'(.+):(\d+):\s*(error|warning):\s+(.*)', line)
         if match is not None:
             filename = match.group(1)
             errors[filename].add(DoxygenError(line=int(match.group(2)), message=match.group(4)))

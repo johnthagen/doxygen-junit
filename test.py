@@ -16,6 +16,7 @@ class ParseDoxygenTestCase(unittest.TestCase):
         file_errors = parse_doxygen(
             'C:/Users/John Hagen/ClionProjects/test/main.cpp:40: warning: '
             'Compound Class is not documented.')
+        self.assertEqual(len(file_errors), 1)
         for i, (filename, errors) in enumerate(file_errors.items()):
             if i == 0:  # pragma: no branch
                 self.assertEqual(filename, 'C:/Users/John Hagen/ClionProjects/test/main.cpp')
@@ -26,6 +27,7 @@ class ParseDoxygenTestCase(unittest.TestCase):
 
     def test_single_doxygen_warning(self):
         file_errors = parse_doxygen('error: Doxyfile not found and no input file specified!')
+        self.assertEqual(len(file_errors), 1)
         for i, (filename, errors) in enumerate(file_errors.items()):
             if i == 0:  # pragma: no branch
                 self.assertEqual(filename, 'doxygen')
@@ -34,6 +36,21 @@ class ParseDoxygenTestCase(unittest.TestCase):
                         self.assertEqual(error.line, 0)
                         self.assertEqual(error.message,
                                          'Doxyfile not found and no input file specified!')
+
+    def test_single_doxygen_warning_no_space(self):
+        file_errors = parse_doxygen(
+            r"bar.h:3:warning: the name 'FOO' supplied as the second argument in the \file "
+            r"statement is not an input file")
+        self.assertEqual(len(file_errors), 1)
+        for i, (filename, errors) in enumerate(file_errors.items()):
+            if i == 0:  # pragma: no branch
+                self.assertEqual(filename, 'bar.h')
+                for j, error in enumerate(errors):
+                    if j == 0:  # pragma: no branch
+                        self.assertEqual(error.line, 3)
+                        self.assertEqual(error.message,
+                                         r"the name 'FOO' supplied as the second "
+                                         r"argument in the \file statement is not an input file")
 
     def test_single_malformed(self):
         file_errors = parse_doxygen('MALFORMED STRING')
