@@ -63,6 +63,11 @@ the conversion tool.
 Releases
 --------
 
+1.0.1 - 2016-10-06
+^^^^^^^^^^^^^^^^^^
+
+Handle warning labels without a space before the preceding colon.
+
 1.0.0 - 2016-09-13
 ^^^^^^^^^^^^^^^^^^
 
