@@ -40,7 +40,7 @@ class ParseDoxygenTestCase(unittest.TestCase):
     def test_single_doxygen_warning_no_space(self):
         file_errors = parse_doxygen(
             r"bar.h:3:warning: the name 'FOO' supplied as the second argument in the \file "
-            r"statement is not an input file")
+            r'statement is not an input file')
         self.assertEqual(len(file_errors), 1)
         for i, (filename, errors) in enumerate(file_errors.items()):
             if i == 0:  # pragma: no branch
@@ -50,7 +50,7 @@ class ParseDoxygenTestCase(unittest.TestCase):
                         self.assertEqual(error.line, 3)
                         self.assertEqual(error.message,
                                          r"the name 'FOO' supplied as the second "
-                                         r"argument in the \file statement is not an input file")
+                                         r'argument in the \file statement is not an input file')
 
     def test_single_malformed(self):
         file_errors = parse_doxygen('MALFORMED STRING')
