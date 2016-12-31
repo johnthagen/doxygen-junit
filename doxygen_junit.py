@@ -136,5 +136,6 @@ def generate_test_suite(errors_by_filename  # type: Dict[str, Set[DoxygenError]]
 
     return ElementTree.ElementTree(test_suite)
 
+
 if __name__ == '__main__':  # pragma: no cover
     sys.exit(main())
