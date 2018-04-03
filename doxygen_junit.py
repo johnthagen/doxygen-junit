@@ -129,9 +129,12 @@ def generate_test_suite(errors_by_filename  # type: Dict[str, Set[DoxygenError]]
         test_suite.attrib['errors'] = str(len(errors_by_filename))
         test_suite.attrib['tests'] = str(len(errors_by_filename))
         for filename, errors in errors_by_filename.items():
-            test_case = ElementTree.SubElement(test_suite, 'testcase', name=filename)
             for error in errors:
-                ElementTree.SubElement(test_case, 'error', file=filename, line=str(error.line),
+                test_case = ElementTree.SubElement(test_suite, 'testcase',
+                                                   name=filename,
+                                                   file=filename,
+                                                   line=str(error.line))
+                ElementTree.SubElement(test_case, 'error',
                                        message='{}: {}'.format(error.line, error.message))
 
     return ElementTree.ElementTree(test_suite)

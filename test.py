@@ -98,10 +98,10 @@ class GenerateTestSuiteTestCase(unittest.TestCase):
 
         test_case_element = root.find('testcase')
         self.assertEqual(test_case_element.get('name'), 'file_name')
+        self.assertEqual(test_case_element.get('file'), 'file_name')
+        self.assertEqual(test_case_element.get('line'), str(40))
 
         error_element = test_case_element.find('error')
-        self.assertEqual(error_element.get('file'), 'file_name')
-        self.assertEqual(error_element.get('line'), str(40))
         self.assertEqual(error_element.get('message'), '40: Compound Class is not documented.')
 
 
