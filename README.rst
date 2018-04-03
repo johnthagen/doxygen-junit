@@ -57,6 +57,12 @@ the conversion tool.
 Releases
 --------
 
+1.2.0 - 2016-12-31
+^^^^^^^^^^^^^^^^^^
+
+- Properly support JUnit XSD.
+- Drop Python 3.3 support.
+
 1.1.0 - 2016-12-31
 ^^^^^^^^^^^^^^^^^^
 
