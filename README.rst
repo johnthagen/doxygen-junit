@@ -19,8 +19,8 @@ doxygen JUnit Converter
 .. image:: https://img.shields.io/pypi/pyversions/doxygen-junit.svg
     :target: https://pypi.python.org/pypi/doxygen-junit/
 
-Tool that converts `doxygen <http://www.stack.nl/~dimitri/doxygen/>`_ XML output to JUnit XML format.
-Use on your CI servers to get more helpful feedback.
+Tool that converts `doxygen <http://www.stack.nl/~dimitri/doxygen/>`_ XML output to JUnit XML
+format. Use on your CI servers to get more helpful feedback.
 
 Installation
 ------------
