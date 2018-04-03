@@ -4,9 +4,6 @@ doxygen JUnit Converter
 .. image:: https://travis-ci.org/johnthagen/doxygen-junit.svg
     :target: https://travis-ci.org/johnthagen/doxygen-junit
 
-.. image:: https://codeclimate.com/github/johnthagen/doxygen-junit/badges/gpa.svg
-   :target: https://codeclimate.com/github/johnthagen/doxygen-junit
-
 .. image:: https://codeclimate.com/github/johnthagen/doxygen-junit/badges/issue_count.svg
    :target: https://codeclimate.com/github/johnthagen/doxygen-junit
 
@@ -20,9 +17,6 @@ doxygen JUnit Converter
     :target: https://pypi.python.org/pypi/doxygen-junit
 
 .. image:: https://img.shields.io/pypi/pyversions/doxygen-junit.svg
-    :target: https://pypi.python.org/pypi/doxygen-junit/
-
-.. image:: https://img.shields.io/pypi/dm/doxygen-junit.svg
     :target: https://pypi.python.org/pypi/doxygen-junit/
 
 Tool that converts `doxygen <http://www.stack.nl/~dimitri/doxygen/>`_ XML output to JUnit XML format.
