@@ -57,7 +57,7 @@ the conversion tool.
 Releases
 --------
 
-1.2.0 - 2016-12-31
+1.2.0 - 2018-04-03
 ^^^^^^^^^^^^^^^^^^
 
 - Properly support JUnit XSD.
