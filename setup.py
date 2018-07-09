@@ -5,7 +5,7 @@ import setuptools
 
 setuptools.setup(
     name='doxygen-junit',
-    version='1.2.0',
+    version='1.3.0',
 
     description='Converts doxygen errors and warnings to JUnit XML format.',
     long_description=open('README.rst').read(),
