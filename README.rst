@@ -57,6 +57,12 @@ the conversion tool.
 Releases
 --------
 
+1.4.0 2019-12-14
+^^^^^^^^^^^^^^^^
+
+- Drop Python 3.4 and support Python 3.8.
+- Include license file.
+
 1.3.0 - 2018-07-09
 ^^^^^^^^^^^^^^^^^^
 
