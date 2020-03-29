@@ -57,7 +57,7 @@ the conversion tool.
 Releases
 --------
 
-2.0.0 2020-
+2.0.0 2019-12-14
 ^^^^^^^^^^^^^^^^
 
 - Drop Python 2.7.
