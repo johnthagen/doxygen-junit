@@ -6,7 +6,7 @@ import argparse
 import collections
 import re
 import sys
-from typing import Dict, Set  # noqa: F401
+from typing import Dict, Set
 from xml.etree import ElementTree
 
 from exitstatus import ExitStatus
