@@ -57,6 +57,11 @@ the conversion tool.
 Releases
 --------
 
+2.1.0 2020-04-18
+^^^^^^^^^^^^^^^^
+
+- Add ``--version`` CLI argument.
+
 2.0.0 2020-03-29
 ^^^^^^^^^^^^^^^^
 

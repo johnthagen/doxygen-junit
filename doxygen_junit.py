@@ -11,6 +11,8 @@ from xml.etree import ElementTree
 
 from exitstatus import ExitStatus
 
+__version__ = '2.1.0'
+
 
 class DoxygenError:
     def __init__(self, line: int, message: str) -> None:
@@ -35,6 +37,9 @@ class DoxygenError:
 
 def parse_arguments() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description='Convert doxygen output to JUnit XML format.')
+    parser.add_argument('--version',
+                        action='version',
+                        version=f'%(prog)s {__version__}')
     parser.add_argument('-i',
                         '--input',
                         required=True,
