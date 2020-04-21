@@ -5,7 +5,7 @@ import setuptools
 
 setuptools.setup(
     name='doxygen-junit',
-    version='2.1.0',  # Keep in sync with __version__.
+    version='2.2.0',  # Keep in sync with __version__.
 
     description='Converts doxygen errors and warnings to JUnit XML format.',
     long_description=open('README.rst').read(),
@@ -17,7 +17,7 @@ setuptools.setup(
 
     py_modules=['doxygen_junit'],
     install_requires=open('requirements.txt').readlines(),
-    python_requires='>=3.5',
+    python_requires='>=3.6',
 
     license='MIT',
     license_files=['LICENSE.txt'],
@@ -32,7 +32,6 @@ setuptools.setup(
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3 :: Only',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',

@@ -112,6 +112,6 @@ class ParseArgumentsTestCase(unittest.TestCase):
             args = parse_arguments()
             mock_argument_parser.assert_called_once_with(
                 description='Convert doxygen output to JUnit XML format.')
-            self.assertEqual(mock_argument_parser.return_value.add_argument.call_count, 2)
+            self.assertEqual(mock_argument_parser.return_value.add_argument.call_count, 3)
             mock_argument_parser.return_value.parse_args.assert_called_once_with()
             self.assertIsNotNone(args)
