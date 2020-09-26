@@ -11,7 +11,7 @@ from xml.etree import ElementTree
 
 from exitstatus import ExitStatus
 
-__version__ = '2.2.0'
+__version__ = "2.2.0"
 
 
 class DoxygenError:
@@ -36,20 +36,17 @@ class DoxygenError:
 
 
 def parse_arguments() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description='Convert doxygen output to JUnit XML format.')
-    parser.add_argument('--version',
-                        action='version',
-                        version=f'%(prog)s {__version__}')
-    parser.add_argument('-i',
-                        '--input',
-                        required=True,
-                        help='Doxygen stderr file to parse.')
+    parser = argparse.ArgumentParser(description="Convert doxygen output to JUnit XML format.")
+    parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
+    parser.add_argument("-i", "--input", required=True, help="Doxygen stderr file to parse.")
 
-    default_output_file = 'doxygen-junit.xml'
-    parser.add_argument('-o',
-                        '--output',
-                        default=default_output_file,
-                        help='Output JUnit XML file. (Default: {})'.format(default_output_file))
+    default_output_file = "doxygen-junit.xml"
+    parser.add_argument(
+        "-o",
+        "--output",
+        default=default_output_file,
+        help="Output JUnit XML file. (Default: {})".format(default_output_file),
+    )
     return parser.parse_args()
 
 
@@ -66,7 +63,7 @@ def main() -> ExitStatus:  # pragma: no cover
 
     try:
         tree = generate_test_suite(parse_doxygen(open(args.input).read()))
-        tree.write(args.output, encoding='utf-8', xml_declaration=True)
+        tree.write(args.output, encoding="utf-8", xml_declaration=True)
     except IOError as e:
         print(str(e), file=sys.stderr)
         return ExitStatus.failure
@@ -86,21 +83,22 @@ def parse_doxygen(error_text: str) -> Dict[str, Set[DoxygenError]]:
         Doxygen errors grouped by file name.
     """
     errors = collections.defaultdict(set)
-    for line in error_text.split('\n'):
+    for line in error_text.split("\n"):
         line = line.rstrip()
-        match = re.search(r'(.+):(\d+):\s*(error|warning):\s+(.*)', line)
+        match = re.search(r"(.+):(\d+):\s*(error|warning):\s+(.*)", line)
         if match is not None:
             filename = match.group(1)
             errors[filename].add(DoxygenError(line=int(match.group(2)), message=match.group(4)))
         else:
-            match = re.search(r'^(error|warning):\s+(.*)$', line)
+            match = re.search(r"^(error|warning):\s+(.*)$", line)
             if match is not None:
-                errors['doxygen'].add(DoxygenError(line=0, message=match.group(2)))
+                errors["doxygen"].add(DoxygenError(line=0, message=match.group(2)))
     return errors
 
 
 def generate_test_suite(
-        errors_by_filename: Dict[str, Set[DoxygenError]]) -> ElementTree.ElementTree:
+    errors_by_filename: Dict[str, Set[DoxygenError]]
+) -> ElementTree.ElementTree:
     """Generates JUnit XML file from parsed errors.
 
     Args:
@@ -109,30 +107,30 @@ def generate_test_suite(
     Returns:
         XML test suite.
     """
-    test_suite = ElementTree.Element('testsuite')
-    test_suite.attrib['failures'] = str(0)
-    test_suite.attrib['name'] = 'doxygen'
-    test_suite.attrib['time'] = str(0)
+    test_suite = ElementTree.Element("testsuite")
+    test_suite.attrib["failures"] = str(0)
+    test_suite.attrib["name"] = "doxygen"
+    test_suite.attrib["time"] = str(0)
 
     # If no errors, create a blank test case.
     if len(errors_by_filename) == 0:
-        test_suite.attrib['tests'] = str(1)
-        test_suite.attrib['errors'] = str(0)
-        ElementTree.SubElement(test_suite, 'testcase', name='no errors')
+        test_suite.attrib["tests"] = str(1)
+        test_suite.attrib["errors"] = str(0)
+        ElementTree.SubElement(test_suite, "testcase", name="no errors")
     else:
-        test_suite.attrib['errors'] = str(len(errors_by_filename))
-        test_suite.attrib['tests'] = str(len(errors_by_filename))
+        test_suite.attrib["errors"] = str(len(errors_by_filename))
+        test_suite.attrib["tests"] = str(len(errors_by_filename))
         for filename, errors in errors_by_filename.items():
             for error in errors:
-                test_case = ElementTree.SubElement(test_suite, 'testcase',
-                                                   name=filename,
-                                                   file=filename,
-                                                   line=str(error.line))
-                ElementTree.SubElement(test_case, 'error',
-                                       message='{}: {}'.format(error.line, error.message))
+                test_case = ElementTree.SubElement(
+                    test_suite, "testcase", name=filename, file=filename, line=str(error.line)
+                )
+                ElementTree.SubElement(
+                    test_case, "error", message="{}: {}".format(error.line, error.message)
+                )
 
     return ElementTree.ElementTree(test_suite)
 
 
-if __name__ == '__main__':  # pragma: no cover
+if __name__ == "__main__":  # pragma: no cover
     sys.exit(main())

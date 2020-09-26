@@ -5,5 +5,8 @@ dist
 __pycache__
 .cache
 .coverage
+coverage.xml
 venv
 .tox
+.mypy_cache
+.pytest_cache
