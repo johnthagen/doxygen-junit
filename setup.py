@@ -4,7 +4,7 @@ import setuptools
 
 setuptools.setup(
     name="doxygen-junit",
-    version="2.2.0",  # Keep in sync with __version__.
+    version="2.2.1",  # Keep in sync with __version__.
     description="Converts doxygen errors and warnings to JUnit XML format.",
     long_description=open("README.rst").read(),
     keywords="doxygen C C++ JUnit",
@@ -30,6 +30,7 @@ setuptools.setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: Implementation :: CPython",
         "Programming Language :: Python :: Implementation :: PyPy",
         "Topic :: Documentation",

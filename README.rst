@@ -57,6 +57,12 @@ the conversion tool.
 Releases
 --------
 
+2.2.1 2020-12-30
+^^^^^^^^^^^^^^^^
+
+- Add Python 3.9 support.
+- Switch to GitHub Actions for CI.
+
 2.2.0 2020-04-21
 ^^^^^^^^^^^^^^^^
 
