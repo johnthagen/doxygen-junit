@@ -1,8 +1,8 @@
 doxygen JUnit Converter
 =======================
 
-.. image:: https://travis-ci.com/johnthagen/doxygen-junit.svg
-    :target: https://travis-ci.com/johnthagen/doxygen-junit
+.. image:: https://github.com/johnthagen/doxygen-junit/workflows/python/badge.svg
+    :target: https://github.com/johnthagen/doxygen-junit/actions
 
 .. image:: https://codeclimate.com/github/johnthagen/doxygen-junit/badges/issue_count.svg
    :target: https://codeclimate.com/github/johnthagen/doxygen-junit
