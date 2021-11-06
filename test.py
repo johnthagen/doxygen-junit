@@ -1,14 +1,9 @@
 """"doxygen-junit tests."""
 
-import sys
 import unittest
+from unittest import mock
 
 from doxygen_junit import DoxygenError, generate_test_suite, parse_arguments, parse_doxygen
-
-if sys.version_info < (3, 3):  # pragma: no cover
-    import mock
-else:  # pragma: no cover
-    from unittest import mock
 
 
 class ParseDoxygenTestCase(unittest.TestCase):

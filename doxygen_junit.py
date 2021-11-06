@@ -11,7 +11,7 @@ from xml.etree import ElementTree
 
 from exitstatus import ExitStatus
 
-__version__ = "2.2.1"
+__version__ = "2.3.0"
 
 
 class DoxygenError:
