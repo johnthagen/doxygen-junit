@@ -57,6 +57,11 @@ the conversion tool.
 Releases
 --------
 
+2.3.0 2021-11-06
+^^^^^^^^^^^^^^^^
+
+- Add Python 3.10 support, drop 3.6.
+
 2.2.1 2020-12-30
 ^^^^^^^^^^^^^^^^
 
